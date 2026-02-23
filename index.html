@@ -1,0 +1,106 @@
+<!doctype html>
+<html lang="th">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>STC 365 Staking</title>
+  <link rel="stylesheet" href="style.css" />
+  <script src="https://cdn.jsdelivr.net/npm/ethers@6.13.2/dist/ethers.umd.min.js"></script>
+  <script src="config.js"></script>
+</head>
+<body>
+<div class="wrap">
+  <h1>🟡 STC 365 Staking (ถอนต้น+ดอกเมื่อครบสัญญา)</h1>
+
+  <div class="card">
+    <div class="row" style="justify-content:space-between; gap:12px; flex-wrap:wrap;">
+      <div>
+        <div class="muted">Wallet</div>
+        <div id="wallet" class="mono">❌ ยังไม่เชื่อมต่อ</div>
+
+        <div class="muted" style="margin-top:6px">
+          Contract: <span id="contract" class="mono">-</span><br/>
+          Explorer:
+          <a id="linkContract" href="#" target="_blank" rel="noreferrer">เปิด Contract</a> |
+          <a id="linkWallet" href="#" target="_blank" rel="noreferrer">เปิด Wallet</a>
+        </div>
+      </div>
+
+      <div class="row" style="gap:10px">
+        <button id="btnConnect">เชื่อมต่อกระเป๋า</button>
+        <button id="btnRefresh" disabled>Refresh</button>
+      </div>
+    </div>
+
+    <div id="status" class="status">พร้อมใช้งาน</div>
+  </div>
+
+  <div class="grid">
+    <div class="card">
+      <h3>1) Stake ด้วย STC (บังคับ MAX)</h3>
+      <div class="muted">กด Stake = ฝาก STC ทั้งหมดที่มีในกระเป๋า (ต้อง Approve ก่อน)</div>
+      <div class="hr"></div>
+
+      <div class="muted">STC amount (แสดงเฉยๆ / ไม่ต้องกรอก)</div>
+      <input id="inStake" placeholder="จะถูกตั้งเป็น MAX อัตโนมัติ" inputmode="decimal" disabled />
+
+      <div class="row" style="margin-top:10px; gap:10px; flex-wrap:wrap;">
+        <button id="btnApprove" disabled>Approve STC</button>
+        <button id="btnStake" disabled>Stake (MAX)</button>
+      </div>
+
+      <div class="hr"></div>
+      <div class="muted">STC Balance (Wallet): <span id="balSTC" class="mono">-</span></div>
+      <div class="muted">Allowance(STC → Contract): <span id="allowSTC" class="mono">-</span></div>
+    </div>
+
+    <div class="card" id="paramsCard">
+      <h3>พารามิเตอร์ของระบบ</h3>
+      <div class="muted">ดึงค่าจริงจาก Contract</div>
+      <div class="hr"></div>
+      <div class="muted">LOCK_SECONDS: <span id="pLock" class="mono">-</span></div>
+      <div class="muted">rewardBps: <span id="pBps" class="mono">-</span></div>
+      <div class="muted">minStake: <span id="pMin" class="mono">-</span></div>
+      <div class="muted">STC in Contract: <span id="cSTC" class="mono">-</span></div>
+    </div>
+  </div>
+
+  <div class="card">
+    <h3>📌 Positions ของคุณ</h3>
+    <div class="hr"></div>
+
+    <div class="row" style="gap:10px; flex-wrap:wrap;">
+      <span class="badge">positions: <span id="posCount" class="mono">0</span></span>
+      <span class="badge">countdown: อัปเดตทุก 1 วินาที</span>
+    </div>
+
+    <div style="margin-top:10px; overflow:auto">
+      <table>
+        <thead>
+          <tr>
+            <th>posId</th>
+            <th>Principal (STC)</th>
+            <th>Start</th>
+            <th>UnlockAt</th>
+            <th>Countdown</th>
+            <th>Accrued</th>
+            <th>Status</th>
+            <th>Action</th>
+          </tr>
+        </thead>
+        <tbody id="posTbody">
+          <tr><td colspan="8" class="muted">-</td></tr>
+        </tbody>
+      </table>
+    </div>
+
+    <div class="hr"></div>
+    <div class="muted">
+      หมายเหตุ: ถอน (Withdraw) จะทำได้เมื่อครบสัญญาเท่านั้น และจ่ายเป็น STC (ต้น+ดอก)
+    </div>
+  </div>
+</div>
+
+<script src="app.js"></script>
+</body>
+</html>
