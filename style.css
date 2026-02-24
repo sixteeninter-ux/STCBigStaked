@@ -1,0 +1,153 @@
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+  font-family: "Segoe UI", system-ui, sans-serif;
+}
+
+body {
+  background: linear-gradient(135deg, #f7fdf9, #ecfdf5);
+  color: #1f2937;
+  padding: 20px;
+}
+
+.wrap {
+  max-width: 1100px;
+  margin: auto;
+}
+
+h1 {
+  font-size: 28px;
+  margin-bottom: 20px;
+  color: #065f46;
+}
+
+.card {
+  background: #ffffff;
+  border-radius: 16px;
+  padding: 20px;
+  margin-bottom: 20px;
+  box-shadow: 0 8px 25px rgba(16, 185, 129, 0.08);
+  border: 1px solid #e5f7ef;
+}
+
+.row {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  flex-wrap: wrap;
+}
+
+.grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 20px;
+}
+
+@media(max-width: 768px){
+  .grid {
+    grid-template-columns: 1fr;
+  }
+}
+
+button {
+  background: #10b981;
+  color: white;
+  border: none;
+  padding: 10px 16px;
+  border-radius: 10px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+button:hover {
+  background: #059669;
+  transform: translateY(-2px);
+}
+
+button:disabled {
+  background: #9ca3af;
+  cursor: not-allowed;
+  transform: none;
+}
+
+input {
+  width: 100%;
+  padding: 10px;
+  border-radius: 10px;
+  border: 1px solid #d1fae5;
+  background: #f0fdf4;
+  color: #065f46;
+  font-weight: 600;
+}
+
+input:disabled {
+  opacity: 0.7;
+}
+
+.muted {
+  font-size: 14px;
+  color: #6b7280;
+}
+
+.status {
+  margin-top: 10px;
+  padding: 10px;
+  border-radius: 10px;
+  background: #ecfdf5;
+  color: #065f46;
+  font-weight: 600;
+}
+
+.badge {
+  background: #d1fae5;
+  color: #065f46;
+  padding: 6px 10px;
+  border-radius: 20px;
+  font-size: 13px;
+  font-weight: 600;
+}
+
+table {
+  width: 100%;
+  border-collapse: collapse;
+  margin-top: 10px;
+}
+
+th, td {
+  padding: 10px;
+  border-bottom: 1px solid #e5f7ef;
+  text-align: left;
+}
+
+th {
+  background: #f0fdf4;
+  color: #065f46;
+}
+
+.ok {
+  color: #059669;
+  font-weight: bold;
+}
+
+.warn {
+  color: #d97706;
+  font-weight: bold;
+}
+
+.no {
+  color: #dc2626;
+  font-weight: bold;
+}
+
+.smallbtn {
+  padding: 6px 12px;
+  font-size: 13px;
+}
+
+.hr {
+  height: 1px;
+  background: #e5f7ef;
+  margin: 15px 0;
+}
